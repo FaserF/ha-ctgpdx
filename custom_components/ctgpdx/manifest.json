@@ -10,7 +10,7 @@
   "iot_class": "cloud_polling",
   "version": "1.0.0",
   "requirements": [
-    "beautifulsoup4==4.12.3"
+    "beautifulsoup4==4.14.2"
   ],
   "homekit": {},
   "ssdp": [],
