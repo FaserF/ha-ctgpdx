@@ -1,0 +1,19 @@
+{
+  "domain": "ctgpdx",
+  "name": "CTGP Deluxe Version",
+  "documentation": "https://github.com/FaserF/ha-ctgpdx",
+  "issue_tracker": "https://github.com/FaserF/ha-ctgpdx/issues",
+  "codeowners": [
+    "@FaserF"
+  ],
+  "config_flow": true,
+  "iot_class": "cloud_polling",
+  "version": "1.0.0",
+  "requirements": [
+    "beautifulsoup4==4.12.3"
+  ],
+  "homekit": {},
+  "ssdp": [],
+  "zeroconf": [],
+  "dependencies": []
+}

@@ -1,0 +1,13 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CTGP Deluxe Version einrichten",
+        "description": "Diese Integration erstellt einen Sensor, um die aktuellste Version von CTGP Deluxe zu verfolgen. Es ist keine weitere Konfiguration notwendig."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Eine Instanz ist bereits konfiguriert."
+    }
+  }
+}
