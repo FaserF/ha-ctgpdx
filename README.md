@@ -5,7 +5,7 @@ The `ctgpdx` sensor will give you a sensor with the latest version available.
 ## Installation
 ### 1. Using HACS (recommended way)
 
-This integration is soon a official HACS Integration and right now an custom integration.
+This integration is no official HACS Integration and right now an custom integration.
 
 Open HACS then install the "ctgpdx" integration or use the link below.
 
@@ -25,7 +25,7 @@ where `<config>` is your Home Assistant configuration directory.
 
 ## Configuration
 
-Go to Configuration -> Integrations and click on "add integration". Then search for "Phönix Bad Ottobrunn".
+Go to Configuration -> Integrations and click on "add integration". Then search for "CTGP Deluxe Version".
 
 [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ctgpdx)
 
