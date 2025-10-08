@@ -38,37 +38,24 @@ None needed.
   alias: 'CTGP-DX: New Version Available'
   description: 'Notifies when the CTGP Deluxe version sensor changes to a valid state.'
   trigger:
-    # Adjust the entity_id to match your sensor's name.
     - platform: state
-      entity_id: sensor.ctgp_dx_latest_version 
+      entity_id: sensor.ctgp_dx_latest_version
   condition:
-    # 1. Ignore notifications if the new state is an error/transient state.
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: trigger.entity_id
-          state: 'unknown'
-        - condition: state
-          entity_id: trigger.entity_id
-          state: 'unavailable'
-    # 2. Ignore notifications if the previous state was also an error/transient state
-    # (prevents notification on first HA startup or recovery).
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: trigger.entity_id
-          state: 'unknown'
-          attribute: 'from_state'
+    - condition: template
+      value_template: "{{ trigger.to_state.state not in ['unknown', 'unavailable'] }}"
+    - condition: template
+      value_template: "{{ trigger.from_state.state not in ['unknown', 'unavailable'] }}"
+    - condition: template
+      value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
   action:
-    - service: notify.mobile_app_your_device 
+    - service: notify.mobile_app_your_device
       data:
         title: '🎉 New CTGP-DX Version Available!'
         message: >
-          New version **{{ states.sensor.ctgp_dx_latest_version.state }}** is now available! 
+          New version **{{ trigger.to_state.state }}** is now available!
           (Previous version: {{ trigger.from_state.state }})
-        # Optional: Add a click action to jump straight to the download page
         data:
-          url: "https://www.ctgpdx.com/download"
+          url: "[https://www.ctgpdx.com/download](https://www.ctgpdx.com/download)"
   mode: single
 ```
 
