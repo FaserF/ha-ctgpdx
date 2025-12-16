@@ -1,31 +1,38 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
-# CTGP Deluxe version Homeassistant Sensor
-The `ctgpdx` sensor will give you a sensor with the latest version available.
 
-## Installation
-### 1. Using HACS (recommended way)
+# CTGP Deluxe Home Assistant Sensor 🏎️
 
-This integration is no official HACS Integration and right now an custom integration.
+The `ctgpdx` sensor provides the latest [CTGP Deluxe](https://www.ctgpdx.com/) version available, allowing you to get notified when updates are released.
 
-Open HACS then install the "ctgpdx" integration or use the link below.
+## Features ✨
+
+- **Latest Version**: Tracks the current version of CTGP Deluxe.
+- **Update Notifications**: Use automations to get alerted on new releases.
+
+## Installation 🛠️
+
+### 1. Using HACS (Recommended)
+
+This integration can be added to HACS as a **Custom Repository**.
+
+1.  Open HACS.
+2.  Click on the 3 dots in the top right corner -> **Custom repositories**.
+3.  Add `https://github.com/FaserF/ha-ctgpdx` and select category **Integration**.
+4.  Click **Download**.
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=FaserF&repository=ha-ctgpdx&category=integration)
 
-If you use this method, your component will always update to the latest version.
+### 2. Manual Installation
 
-### 2. Manual
+1.  Download the latest [Release](https://github.com/FaserF/ha-ctgpdx/releases/latest).
+2.  Extract the ZIP file.
+3.  Copy the `ctgpdx` folder to `<config>/custom_components/`.
 
-- Download the latest zip release from [here](https://github.com/FaserF/ha-ctgpdx/releases/latest)
-- Extract the zip file
-- Copy the folder "ctgpdx" from within custom_components with all of its components to `<config>/custom_components/`
+## Configuration ⚙️
 
-where `<config>` is your Home Assistant configuration directory.
-
->__NOTE__: Do not download the file by using the link above directly, the status in the "master" branch can be in development and therefore is maybe not working.
-
-## Configuration
-
-Go to Configuration -> Integrations and click on "add integration". Then search for "CTGP Deluxe Version".
+1.  Go to **Settings** -> **Devices & Services**.
+2.  Click **Add Integration**.
+3.  Search for "CTGP Deluxe Version".
 
 [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ctgpdx)
 
