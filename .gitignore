@@ -7,3 +7,4 @@ github_conf/
 /tests/homeassistant/__pycache__
 /tests/homeassistant/helpers/__pycache__
 /tests/homeassistant
+/__pycache__
