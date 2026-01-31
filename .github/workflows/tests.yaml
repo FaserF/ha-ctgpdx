@@ -28,6 +28,6 @@ jobs:
 
       - name: Run tests
         env:
-          PYTHONPATH: .:${{ github.workspace }}/tests
+          PYTHONPATH: ${{ github.workspace }}/tests:${{ github.workspace }}
         run: |
           pytest
