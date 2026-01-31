@@ -33,8 +33,11 @@ def mock_hass():
     original_hass = getattr(frame._hass, 'hass', None)
     frame._hass.hass = hass
     yield hass
-    # Restore the original value
+    # Restore the original value and clean up the event loop
     frame._hass.hass = original_hass
+    # Close the event loop to prevent hanging
+    loop.close()
+    asyncio.set_event_loop(None)
 
 @pytest.fixture
 def sample_html():
