@@ -8,10 +8,9 @@ from .coordinator import CtgpdxUpdateCoordinator
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up CTGP-DX from a config entry."""
     # Ensure the visit button points to the download page
-    if not entry.configuration_url:
-        hass.config_entries.async_update_entry(
-            entry, configuration_url="https://www.ctgpdx.com/download"
-        )
+    hass.config_entries.async_update_entry(
+        entry, configuration_url="https://www.ctgpdx.com/download"
+    )
 
     coordinator = CtgpdxUpdateCoordinator(hass)
 
