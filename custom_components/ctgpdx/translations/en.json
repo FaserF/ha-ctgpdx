@@ -2,8 +2,8 @@
   "config": {
     "step": {
       "user": {
-        "title": "Set up CTGP Deluxe Version",
-        "description": "This integration will create a sensor to track the latest version of CTGP Deluxe. There is no further configuration needed."
+        "title": "Set up CTGP Deluxe",
+        "description": "This integration will track the latest version and details of CTGP Deluxe. There is no further configuration needed."
       }
     },
     "abort": {

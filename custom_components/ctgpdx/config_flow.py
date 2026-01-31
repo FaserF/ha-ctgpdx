@@ -4,7 +4,8 @@ from __future__ import annotations
 from homeassistant import config_entries
 from homeassistant.core import HomeAssistant
 
-from .const import DOMAIN, CONF_NAME
+from .const import DOMAIN
+
 
 async def _async_has_devices(hass: HomeAssistant) -> bool:
     """Return if there are devices that can be discovered."""
@@ -27,7 +28,7 @@ class CtgpdxConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         # If the user submits the form (even an empty one)
         if user_input is not None:
             # We don't have any data to store from the user, so data is empty.
-            return self.async_create_entry(title=CONF_NAME, data={})
+            return self.async_create_entry(title="CTGP Deluxe", data={})
 
         # Show the user a form with no fields, just a submit button.
         return self.async_show_form(step_id="user")

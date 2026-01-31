@@ -1,3 +1,9 @@
 # Ignore folders.
 megalinter-reports/
 github_conf/
+/custom_components/__pycache__
+/tests/__pycache__
+/custom_components/ctgpdx/__pycache__
+/tests/homeassistant/__pycache__
+/tests/homeassistant/helpers/__pycache__
+/tests/homeassistant

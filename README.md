@@ -7,6 +7,9 @@ The `ctgpdx` sensor provides the latest [CTGP Deluxe](https://www.ctgpdx.com/) v
 ## Features ✨
 
 - **Latest Version**: Tracks the current version of CTGP Deluxe.
+- **Download Size**: Shows the size of the download package.
+- **Unpacked Size**: Shows the required space on the SD card.
+- **Release Date**: Displays when the latest version was released.
 - **Update Notifications**: Use automations to get alerted on new releases.
 
 ## Installation 🛠️
@@ -32,18 +35,30 @@ This integration can be added to HACS as a **Custom Repository**.
 
 1.  Go to **Settings** -> **Devices & Services**.
 2.  Click **Add Integration**.
-3.  Search for "CTGP Deluxe Version".
+3.  Search for **CTGP Deluxe**.
 
 [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ctgpdx)
 
 ### Configuration Variables
 None needed.
 
+## Sensors 📊
+
+After installation, the suivant sensors will be available:
+
+| Sensor | Name | Icon | Description |
+|---|---|---|---|
+| `sensor.ctgp_dx_latest_version` | CTGP-DX Latest Version | `mdi:nintendo-switch` | The current version number (includes Release Date as attribute) |
+| `sensor.ctgp_dx_download_size` | CTGP-DX Download Size | `mdi:download-network` | Size of the ZIP file (Disabled by default) |
+| `sensor.ctgp_dx_unpacked_size` | CTGP-DX Unpacked Size | `mdi:folder-zip` | Space needed on SD card (Disabled by default) |
+
+
 ## Automations
+
+### Notify on Update
 ```yaml
 - id: 'ctgpdx_new_version_notification'
   alias: 'CTGP-DX: New Version Available'
-  description: 'Notifies when the CTGP Deluxe version sensor changes to a valid state.'
   trigger:
     - platform: state
       entity_id: sensor.ctgp_dx_latest_version
@@ -59,17 +74,18 @@ None needed.
       data:
         title: '🎉 New CTGP-DX Version Available!'
         message: >
-          New version **{{ trigger.to_state.state }}** is now available!
-          (Previous version: {{ trigger.from_state.state }})
+          New version **{{ trigger.to_state.state }}** is now available (Released: {{ state_attr('sensor.ctgp_dx_latest_version', 'release_date') }}).
+          Download size: {{ states('sensor.ctgp_dx_download_size') }}.
+
         data:
-          url: "[https://www.ctgpdx.com/download](https://www.ctgpdx.com/download)"
+          url: "https://www.ctgpdx.com/download"
   mode: single
 ```
 
 ## Bug reporting
-Open an issue over at [github issues](https://github.com/FaserF/ha-ctgpdx/issues). Please prefer sending over a log with debugging enabled.
+Open an issue over at [GitHub issues](https://github.com/FaserF/ha-ctgpdx/issues). Please prefer sending over a log with debugging enabled.
 
-To enable debugging enter the following in your configuration.yaml
+To enable debugging enter the following in your `configuration.yaml`:
 
 ```yaml
 logger:
@@ -77,7 +93,5 @@ logger:
         custom_components.ctgpdx: debug
 ```
 
-You can then find the log in the HA settings -> System -> Logs -> Enter "ctgpdx" in the search bar -> "Load full logs"
-
 ## Thanks to
-The data is coming from the corresponding [ctgpdx.com](https://www.ctgpdx.com/download) website.
+The data is scraped from the official [ctgpdx.com](https://www.ctgpdx.com/download) website. All credits for the mod go to the CTGP Deluxe Team!
