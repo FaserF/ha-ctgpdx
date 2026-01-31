@@ -12,14 +12,13 @@ if tests_dir not in sys.path:
 import pytest
 from unittest.mock import MagicMock, patch
 
-# Import the frame module (which is now our mock)
-from homeassistant.helpers import frame
-
 
 @pytest.fixture
 def mock_hass():
     """Mock Home Assistant with proper event loop and frame helper setup."""
     import asyncio
+    # Import frame here, after sys.path has been set up
+    from homeassistant.helpers import frame
 
     hass = MagicMock()
     # Provide a real event loop for frame.report_usage() which calls run_callback_threadsafe
