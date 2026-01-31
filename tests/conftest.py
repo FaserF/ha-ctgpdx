@@ -1,13 +1,32 @@
 """Fixtures for CTGP-DX tests."""
+import sys
+import os
+
+# Insert the tests directory at the beginning of sys.path BEFORE any imports
+# This ensures our mock homeassistant modules take precedence over the installed package
+tests_dir = os.path.dirname(os.path.abspath(__file__))
+if tests_dir not in sys.path:
+    sys.path.insert(0, tests_dir)
+
+# Now we can import - these will use our mocks
 import pytest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
+
+# Import the frame module (which is now our mock)
+from homeassistant.helpers import frame
+
 
 @pytest.fixture
 def mock_hass():
-    """Mock Home Assistant."""
+    """Mock Home Assistant with proper frame helper setup."""
     hass = MagicMock()
-    # Add any necessary hass methods here
-    return hass
+    # Set the frame helper's _hass ContextVar to our mock
+    # This is required because DataUpdateCoordinator checks for the hass context
+    original_hass = getattr(frame._hass, 'hass', None)
+    frame._hass.hass = hass
+    yield hass
+    # Restore the original value
+    frame._hass.hass = original_hass
 
 @pytest.fixture
 def sample_html():
