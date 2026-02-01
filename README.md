@@ -79,11 +79,11 @@ This automation sends a notification to your phone whenever a new version is det
       data:
         title: '🎉 New CTGP-DX Version Available!'
         message: >
-          New version **{{ trigger.to_state.state }}** is now available (Released: {{ state_attr('sensor.ctgp_dx_latest_version', 'release_date') }}).
-          Download size: {{ states('sensor.ctgp_dx_download_size') }}.
+          New CTGP-DX Version **{{ states('sensor.ctgp_dx_latest_version') }}** released at {{ state_attr('sensor.ctgp_dx_latest_version', 'release_date') }} is now available!
+          Download: {{ state_attr('sensor.ctgp_dx_latest_version', 'data_provided_by') }}
         data:
-          url: "https://www.ctgpdx.com/download"
-          clickAction: "https://www.ctgpdx.com/download"
+          url: "{{ state_attr('sensor.ctgp_dx_latest_version', 'data_provided_by') }}"
+          clickAction: "{{ state_attr('sensor.ctgp_dx_latest_version', 'data_provided_by') }}"
   mode: single
 ```
 </details>

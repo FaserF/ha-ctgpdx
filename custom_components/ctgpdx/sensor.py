@@ -14,6 +14,8 @@ from .const import (
     ATTR_DOWNLOAD_SIZE,
     ATTR_UNPACKED_SIZE,
     ATTR_RELEASE_DATE,
+    ATTR_DATA_PROVIDED_BY,
+    URL,
 )
 from .coordinator import CtgpdxUpdateCoordinator
 
@@ -86,12 +88,12 @@ class CtgpdxSensor(CoordinatorEntity[CtgpdxUpdateCoordinator], SensorEntity):
     @property
     def extra_state_attributes(self) -> dict[str, str] | None:
         """Return the extra state attributes."""
-        if (
-            self._sensor_type == ATTR_VERSION
-            and self.coordinator.data
-            and (release_date := self.coordinator.data.get(ATTR_RELEASE_DATE))
-        ):
-            return {ATTR_RELEASE_DATE: release_date}
+        if self._sensor_type == ATTR_VERSION and self.coordinator.data:
+            attributes = {}
+            if release_date := self.coordinator.data.get(ATTR_RELEASE_DATE):
+                attributes[ATTR_RELEASE_DATE] = release_date
+            attributes[ATTR_DATA_PROVIDED_BY] = URL
+            return attributes
         return None
 
     @property
