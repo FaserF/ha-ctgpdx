@@ -1,4 +1,12 @@
 """Tests for the CTGP-DX coordinator scraping logic."""
+import sys
+import os
+
+# Fail-safe path injection to ensure homeassistant mock is found during collection
+tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tests"))
+if tests_dir not in sys.path:
+    sys.path.insert(0, tests_dir)
+
 import pytest
 from unittest.mock import AsyncMock, patch, MagicMock
 from custom_components.ctgpdx.coordinator import CtgpdxUpdateCoordinator

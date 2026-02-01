@@ -27,5 +27,7 @@ jobs:
           pip install pytest pytest-asyncio beautifulsoup4 aiohttp
 
       - name: Run tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}/tests:${{ github.workspace }}
         run: |
           pytest
