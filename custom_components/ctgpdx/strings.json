@@ -13,7 +13,7 @@
   "issues": {
     "website_change": {
       "title": "CTGP-DX website structure changed",
-      "description": "The integration has been unable to fetch data from the CTGP-DX website for more than 24 hours. It is likely that the website structure has changed. Please report this issue on [GitHub](https://github.com/FaserF/ha-ctgpdx/issues)."
+      "description": "The integration has been unable to fetch data from the CTGP-DX website for more than 24 hours. It is likely that the website structure has changed. Please report this issue on GitHub."
     }
   }
 }

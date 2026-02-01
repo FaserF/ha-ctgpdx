@@ -159,4 +159,5 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
                 severity=IssueSeverity.WARNING,
                 translation_domain=DOMAIN,
                 translation_key="website_change",
+                learn_more_url="https://github.com/FaserF/ha-ctgpdx/issues",
             )

@@ -6,5 +6,4 @@ github_conf/
 /custom_components/ctgpdx/__pycache__
 /tests/homeassistant/__pycache__
 /tests/homeassistant/helpers/__pycache__
-/tests/homeassistant
 /__pycache__
