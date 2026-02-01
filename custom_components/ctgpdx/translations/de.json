@@ -9,5 +9,11 @@
     "abort": {
       "single_instance_allowed": "Eine Instanz ist bereits konfiguriert."
     }
+  },
+  "issues": {
+    "website_change": {
+      "title": "CTGP-DX Website-Struktur geändert",
+      "description": "Die Integration konnte seit mehr als 24 Stunden keine Daten von der CTGP-DX Website abrufen. Es ist wahrscheinlich, dass sich die Struktur der Website geändert hat. Bitte melde dieses Problem auf [GitHub](https://github.com/FaserF/ha-ctgpdx/issues)."
+    }
   }
 }

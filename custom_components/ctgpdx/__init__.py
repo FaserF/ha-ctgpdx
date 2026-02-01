@@ -7,11 +7,6 @@ from .coordinator import CtgpdxUpdateCoordinator
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up CTGP-DX from a config entry."""
-    # Ensure the visit button points to the download page
-    hass.config_entries.async_update_entry(
-        entry, configuration_url="https://www.ctgpdx.com/download"
-    )
-
     coordinator = CtgpdxUpdateCoordinator(hass)
 
     # Fetch initial data so we have it when the sensor is set up
@@ -29,8 +24,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
-    if unload_ok := await hass.config_entries.async_unload_platforms(
-        entry, PLATFORMS
-    ):
+    if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
         hass.data[DOMAIN].pop(entry.entry_id)
     return unload_ok

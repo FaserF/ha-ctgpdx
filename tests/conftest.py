@@ -1,4 +1,5 @@
 """Fixtures for CTGP-DX tests."""
+
 import sys
 import os
 
@@ -9,14 +10,15 @@ if tests_dir not in sys.path:
     sys.path.insert(0, tests_dir)
 
 # Now we can import - these will use our mocks
-import pytest
-from unittest.mock import MagicMock, patch
+import pytest  # noqa: E402
+from unittest.mock import MagicMock  # noqa: E402
 
 
 @pytest.fixture
 def mock_hass():
     """Mock Home Assistant with proper event loop and frame helper setup."""
     import asyncio
+
     # Import frame here, after sys.path has been set up
     from homeassistant.helpers import frame
 
@@ -29,7 +31,7 @@ def mock_hass():
 
     # Set the frame helper's _hass ContextVar to our mock
     # This is required because DataUpdateCoordinator checks for the hass context
-    original_hass = getattr(frame._hass, 'hass', None)
+    original_hass = getattr(frame._hass, "hass", None)
     frame._hass.hass = hass
     yield hass
     # Restore the original value and clean up the event loop
@@ -37,6 +39,7 @@ def mock_hass():
     # Close the event loop to prevent hanging
     loop.close()
     asyncio.set_event_loop(None)
+
 
 @pytest.fixture
 def sample_html():

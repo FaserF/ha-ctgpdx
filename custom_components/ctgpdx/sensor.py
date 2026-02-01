@@ -1,4 +1,5 @@
 """Sensor platform for the CTGP Deluxe Version integration."""
+
 from __future__ import annotations
 
 from homeassistant.components.sensor import SensorEntity
@@ -72,9 +73,7 @@ class CtgpdxSensor(CoordinatorEntity[CtgpdxUpdateCoordinator], SensorEntity):
         self._sensor_type = sensor_type
         self._attr_name = f"CTGP-DX {name_suffix}"
         self._attr_icon = icon
-        self._attr_unique_id = (
-            f"{entry.entry_id}_ctgpdx_{sensor_type}"
-        )
+        self._attr_unique_id = f"{entry.entry_id}_ctgpdx_{sensor_type}"
         self._attr_entity_registry_enabled_default = enabled_default
 
     @property
