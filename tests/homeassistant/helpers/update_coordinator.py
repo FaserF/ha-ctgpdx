@@ -9,5 +9,6 @@ class DataUpdateCoordinator:
     def __class_getitem__(cls, key):
         return cls
 
+
 class UpdateFailed(Exception):
     pass

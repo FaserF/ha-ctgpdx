@@ -84,7 +84,9 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
 
             if not version_match:
                 # Priority 3: any string that looks like a version after "v"
-                version_match = re.search(r"\bv([\d\.a-z\s]+?)\b", normalized_text, re.I)
+                version_match = re.search(
+                    r"\bv([\d\.a-z\s]+?)\b", normalized_text, re.I
+                )
 
             if version_match:
                 # Clean up extracted version by removing internal spaces

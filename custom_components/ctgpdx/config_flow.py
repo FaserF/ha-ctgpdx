@@ -15,7 +15,7 @@ async def _async_has_devices(hass: HomeAssistant) -> bool:
     return len(hass.config_entries.async_entries(DOMAIN)) > 0
 
 
-class CtgpdxConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class CtgpdxConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):  # type: ignore
     """Handle a config flow for CTGP Deluxe Version."""
 
     VERSION = 1
