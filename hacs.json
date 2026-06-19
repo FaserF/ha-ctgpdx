@@ -1,4 +1,6 @@
 {
-    "name": "CTGP Deluxe version tracker",
-    "render_readme": true
+  "name": "CTGP Deluxe version tracker",
+  "render_readme": true,
+  "zip_release": true,
+  "filename": "ctgpdx.zip"
 }
