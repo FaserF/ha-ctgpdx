@@ -1,7 +1,6 @@
 import asyncio
-import aiohttp
-from bs4 import BeautifulSoup
 import re
+
 
 async def main():
     # Test cases
@@ -23,6 +22,7 @@ async def main():
             print(f"  Result: '{v}'")
         else:
             print("  Result: FAILED")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
