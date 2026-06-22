@@ -210,7 +210,8 @@ jobs:
 
       - name: 📦 Zip Component
         run: |
-          zip -r ctgpdx.zip custom_components/ctgpdx
+          cd custom_components/ctgpdx
+          zip -r ../../ctgpdx.zip .
 
       - name: Download Release Body Artifact
         uses: actions/download-artifact@v8
