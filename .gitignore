@@ -7,3 +7,10 @@ github_conf/
 /tests/homeassistant/__pycache__
 /tests/homeassistant/helpers/__pycache__
 /__pycache__
+
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+.venv/
+*.pyc
