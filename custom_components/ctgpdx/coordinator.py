@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from datetime import datetime, timezone, timedelta
 
-from aiohttp import ClientError
+from aiohttp import ClientError, ClientTimeout
 from bs4 import BeautifulSoup
 
 from homeassistant.core import HomeAssistant
@@ -49,7 +49,7 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
         """Fetch data from the CTGP-DX website."""
         try:
             session = async_get_clientsession(self.hass)
-            async with session.get(URL, timeout=10) as response:
+            async with session.get(URL, timeout=ClientTimeout(total=10)) as response:
                 response.raise_for_status()
                 html = await response.text()
         except ClientError as err:
@@ -159,7 +159,6 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
                 "website_change",
                 is_fixable=False,
                 severity=IssueSeverity.WARNING,
-                translation_domain=DOMAIN,
                 translation_key="website_change",
                 learn_more_url="https://github.com/FaserF/ha-ctgpdx/issues",
             )
