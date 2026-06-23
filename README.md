@@ -14,6 +14,7 @@ The `ctgpdx` sensor provides the latest [CTGP Deluxe](https://www.ctgpdx.com/) v
 ## Installation 🛠️
 
 ### 1. Using HACS (Recommended)
+[![Downloads (Current release)](https://img.shields.io/github/downloads/FaserF/ha-ctgpdx/latest/integration.zip?label=Downloads%20(Current%20release)&style=flat-square)](https://github.com/FaserF/ha-ctgpdx/releases)
 
 This integration can be added to HACS as a **Custom Repository**.
 
