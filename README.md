@@ -3,6 +3,22 @@
 
 The `ctgpdx` sensor provides the latest [CTGP Deluxe](https://www.ctgpdx.com/) version available, allowing you to get notified when updates are released.
 
+---
+
+## ❤️ Support This Project
+
+> I maintain this integration in my **free time alongside my regular job** — bug hunting, new features, and testing on real hardware. Test devices cost money, and every donation helps me stay independent and free up more time for open-source work.
+>
+> Donations are completely voluntary — but the more support I receive, the less I depend on other income sources and the more time I can realistically invest into these GitHub projects. 💪
+
+<div align="center">
+
+[![GitHub Sponsors](https://img.shields.io/badge/Sponsor%20on-GitHub-%23EA4AAA?style=for-the-badge&logo=github-sponsors&logoColor=white)](https://github.com/sponsors/FaserF)&nbsp;&nbsp;
+[![PayPal](https://img.shields.io/badge/Donate%20via-PayPal-%2300457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/FaserF)
+
+</div>
+
+---
 ## Features ✨
 
 - **Latest Version**: Tracks the current version of CTGP Deluxe.
@@ -14,7 +30,7 @@ The `ctgpdx` sensor provides the latest [CTGP Deluxe](https://www.ctgpdx.com/) v
 ## Installation 🛠️
 
 ### 1. Using HACS (Recommended)
-[![Downloads (Current release)](https://img.shields.io/github/downloads/FaserF/ha-ctgpdx/latest/integration.zip?label=Downloads%20(Current%20release)&style=flat-square)](https://github.com/FaserF/ha-ctgpdx/releases)
+[![Downloads (Current release)](https://img.shields.io/github/downloads/FaserF/ha-ctgpdx/latest/ctgpdx.zip?label=Downloads%20(Current%20release)&style=flat-square)](https://github.com/FaserF/ha-ctgpdx/releases)
 
 This integration can be added to HACS as a **Custom Repository**.
 
