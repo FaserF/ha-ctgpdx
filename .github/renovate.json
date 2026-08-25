@@ -1,17 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
   "automerge": true,
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": [
-        "/manifest.json$"
-      ],
-      "matchStrings": [
-        "beautifulsoup4==?(?<currentValue>.+?)[\"']?\\s+"
-      ],
+      "customType": "regex",
+      "managerFilePatterns": ["//manifest.json$/"],
+      "matchStrings": ["beautifulsoup4==?(?<currentValue>.+?)[\"']?\\s+"],
       "datasourceTemplate": "pypi",
       "depNameTemplate": "beautifulsoup4"
     }
