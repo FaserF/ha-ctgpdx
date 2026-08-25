@@ -13,4 +13,4 @@ _hass = _HassContext()
 
 def report_usage(*args, **kwargs):
     """Mock report_usage that does nothing - completely bypasses all frame checking."""
-    return None
+    return

@@ -3,17 +3,16 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 
 from aiohttp import ClientError, ClientTimeout
 from bs4 import BeautifulSoup
-
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.issue_registry import (
+    IssueSeverity,
     async_create_issue,
     async_delete_issue,
-    IssueSeverity,
 )
 from homeassistant.helpers.update_coordinator import (
     DataUpdateCoordinator,
@@ -21,14 +20,14 @@ from homeassistant.helpers.update_coordinator import (
 )
 
 from .const import (
+    ATTR_DOWNLOAD_SIZE,
+    ATTR_RELEASE_DATE,
+    ATTR_UNPACKED_SIZE,
+    ATTR_VERSION,
     DOMAIN,
     LOGGER,
-    URL,
     UPDATE_INTERVAL,
-    ATTR_VERSION,
-    ATTR_DOWNLOAD_SIZE,
-    ATTR_UNPACKED_SIZE,
-    ATTR_RELEASE_DATE,
+    URL,
 )
 
 
@@ -85,7 +84,7 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
             if not version_match:
                 # Priority 3: any string that looks like a version after "v"
                 version_match = re.search(
-                    r"\bv([\d\.a-z\s]+?)\b", normalized_text, re.I
+                    r"\bv([\d\.a-z\s]+?)\b", normalized_text, re.IGNORECASE
                 )
 
             if version_match:
@@ -98,12 +97,12 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
             # Keywords "Download size" and "Unpacked size" can have internal spaces or typos
             # like "Download size :", "Unpacked s ize:", etc.
             size_pattern = r"Download.*?s\s*ize\s*:\s*([\d\.]+\s*[KMGT]?B)"
-            size_match = re.search(size_pattern, normalized_text, re.I)
+            size_match = re.search(size_pattern, normalized_text, re.IGNORECASE)
             if size_match:
                 data[ATTR_DOWNLOAD_SIZE] = size_match.group(1)
 
             unpacked_pattern = r"Unpacked.*?s\s*ize\s*:\s*([\d\.]+\s*[KMGT]?B)"
-            unpacked_match = re.search(unpacked_pattern, normalized_text, re.I)
+            unpacked_match = re.search(unpacked_pattern, normalized_text, re.IGNORECASE)
             if unpacked_match:
                 data[ATTR_UNPACKED_SIZE] = unpacked_match.group(1)
 
@@ -111,7 +110,7 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
             if ATTR_VERSION in data:
                 ver_escaped = re.escape(data[ATTR_VERSION])
                 date_pattern = rf"v?{ver_escaped}\s*-\s*([A-Za-z]+\s+\d+\w*,\s+\d{{4}})"
-                date_match = re.search(date_pattern, normalized_text, re.I)
+                date_match = re.search(date_pattern, normalized_text, re.IGNORECASE)
                 if date_match:
                     data[ATTR_RELEASE_DATE] = date_match.group(1)
 

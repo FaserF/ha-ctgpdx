@@ -1,16 +1,18 @@
 """Tests for the CTGP-DX scraping robustness."""
 
-import sys
 import os
+import sys
 
 # Fail-safe path injection
 tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tests"))
 if tests_dir not in sys.path:
     sys.path.insert(0, tests_dir)
 
-import pytest  # noqa: E402
-from unittest.mock import patch, MagicMock  # noqa: E402
-from custom_components.ctgpdx.coordinator import CtgpdxUpdateCoordinator  # noqa: E402
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from custom_components.ctgpdx.coordinator import CtgpdxUpdateCoordinator
 
 
 @pytest.mark.asyncio

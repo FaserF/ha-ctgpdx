@@ -1,7 +1,7 @@
 """Constants for the CTGP Deluxe Version integration."""
 
-from datetime import timedelta
 import logging
+from datetime import timedelta
 
 from homeassistant.const import Platform
 

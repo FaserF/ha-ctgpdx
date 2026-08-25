@@ -9,12 +9,12 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import (
-    DOMAIN,
-    ATTR_VERSION,
-    ATTR_DOWNLOAD_SIZE,
-    ATTR_UNPACKED_SIZE,
-    ATTR_RELEASE_DATE,
     ATTR_DATA_PROVIDED_BY,
+    ATTR_DOWNLOAD_SIZE,
+    ATTR_RELEASE_DATE,
+    ATTR_UNPACKED_SIZE,
+    ATTR_VERSION,
+    DOMAIN,
     URL,
 )
 from .coordinator import CtgpdxUpdateCoordinator

@@ -1,17 +1,19 @@
 """Tests for the CTGP-DX repair issues."""
 
-import sys
 import os
-from datetime import datetime, timezone, timedelta
+import sys
+from datetime import datetime, timedelta, timezone
 
 # Fail-safe path injection
 tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tests"))
 if tests_dir not in sys.path:
     sys.path.insert(0, tests_dir)
 
-import pytest  # noqa: E402
-from unittest.mock import patch, MagicMock  # noqa: E402
-from custom_components.ctgpdx.coordinator import CtgpdxUpdateCoordinator  # noqa: E402
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from custom_components.ctgpdx.coordinator import CtgpdxUpdateCoordinator
 
 
 @pytest.mark.asyncio

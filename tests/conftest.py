@@ -1,7 +1,7 @@
 """Fixtures for CTGP-DX tests."""
 
-import sys
 import os
+import sys
 
 # Insert the tests directory at the beginning of sys.path BEFORE any imports
 # This ensures our mock homeassistant modules take precedence over the installed package
@@ -10,8 +10,9 @@ if tests_dir not in sys.path:
     sys.path.insert(0, tests_dir)
 
 # Now we can import - these will use our mocks
-import pytest  # noqa: E402
-from unittest.mock import MagicMock  # noqa: E402
+from unittest.mock import MagicMock
+
+import pytest
 
 
 @pytest.fixture
