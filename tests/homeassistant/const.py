@@ -1,5 +1,5 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class Platform(str, Enum):
+class Platform(StrEnum):
     SENSOR = "sensor"

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from aiohttp import ClientError, ClientTimeout
 from bs4 import BeautifulSoup
@@ -42,7 +42,7 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
             name=DOMAIN,
             update_interval=UPDATE_INTERVAL,
         )
-        self._last_success_time: datetime | None = datetime.now(timezone.utc)
+        self._last_success_time: datetime | None = datetime.now(UTC)
 
     async def _async_update_data(self) -> dict[str, str]:
         """Fetch data from the CTGP-DX website."""
@@ -129,7 +129,7 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
                 )
 
             # Success!
-            self._last_success_time = datetime.now(timezone.utc)
+            self._last_success_time = datetime.now(UTC)
             async_delete_issue(self.hass, DOMAIN, "website_change")
 
             if ATTR_VERSION not in data:
@@ -151,7 +151,7 @@ class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
             # Should not happen as we initialize it, but just in case
             return
 
-        if datetime.now(timezone.utc) - self._last_success_time > timedelta(hours=24):
+        if datetime.now(UTC) - self._last_success_time > timedelta(hours=24):
             async_create_issue(
                 self.hass,
                 DOMAIN,

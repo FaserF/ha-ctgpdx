@@ -2,7 +2,7 @@
 
 import os
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 # Fail-safe path injection
 tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tests"))
@@ -22,7 +22,7 @@ async def test_repair_issue_creation(mock_hass):
     coordinator = CtgpdxUpdateCoordinator(mock_hass)
 
     # Set last success to 25 hours ago
-    coordinator._last_success_time = datetime.now(timezone.utc) - timedelta(hours=25)
+    coordinator._last_success_time = datetime.now(UTC) - timedelta(hours=25)
 
     with (
         patch(

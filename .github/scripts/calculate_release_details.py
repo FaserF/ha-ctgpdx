@@ -37,7 +37,7 @@ def main():
     manifest_path = manifest_files[0]
     domain = os.path.basename(os.path.dirname(manifest_path))
 
-    with open(manifest_path, "r", encoding="utf-8") as f:
+    with open(manifest_path, encoding="utf-8") as f:
         manifest = json.load(f)
 
     friendly_name = manifest.get("name", domain)
@@ -278,7 +278,6 @@ def main():
     ]
 
     body = "\n".join(body_parts)
-    release_body = body
     with open("release_body.md", "w", encoding="utf-8") as f:
         f.write(body)
 
