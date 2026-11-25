@@ -1,17 +1,21 @@
+import asyncio
 from unittest.mock import MagicMock
 
 import pytest
+from homeassistant.helpers import frame
 
 
 @pytest.fixture
-def mock_hass(tmp_path):
+async def mock_hass(tmp_path):
     """Mock Home Assistant."""
     hass = MagicMock()
+    hass.loop = asyncio.get_running_loop()
     hass.config = MagicMock()
     hass.config.config_dir = str(tmp_path)
     hass.config.components = set()
     hass.data = {}
     hass.services = MagicMock()
+    frame.async_setup(hass)
     return hass
 
 

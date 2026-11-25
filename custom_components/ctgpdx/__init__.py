@@ -7,7 +7,7 @@ from .coordinator import CtgpdxUpdateCoordinator
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up CTGP-DX from a config entry."""
-    coordinator = CtgpdxUpdateCoordinator(hass)
+    coordinator = CtgpdxUpdateCoordinator(hass, entry)
 
     # Fetch initial data so we have it when the sensor is set up
 

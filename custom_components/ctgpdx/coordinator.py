@@ -7,6 +7,7 @@ from datetime import UTC, datetime, timedelta
 
 from aiohttp import ClientError, ClientTimeout
 from bs4 import BeautifulSoup
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.issue_registry import (
@@ -34,12 +35,15 @@ from .const import (
 class CtgpdxUpdateCoordinator(DataUpdateCoordinator[dict[str, str]]):
     """Class to manage fetching CTGP-DX data."""
 
-    def __init__(self, hass: HomeAssistant) -> None:
+    def __init__(
+        self, hass: HomeAssistant, config_entry: ConfigEntry | None = None
+    ) -> None:
         """Initialize."""
         super().__init__(
             hass,
             LOGGER,
             name=DOMAIN,
+            config_entry=config_entry,
             update_interval=UPDATE_INTERVAL,
         )
         self._last_success_time: datetime | None = datetime.now(UTC)
